@@ -1,7 +1,7 @@
 //button on click event that submits the burger
 //button on click event that devoures the burger
 
-$(function () {
+$(document).ready (function() {
     $(".create-form").on("submit", function (event) {
         event.preventDefault();
 
@@ -18,17 +18,16 @@ $(function () {
         })
     })
 
-    $(".eatburger").ob("click", function (event) {
+    $(".eatburger").on("click", function (event) {
         event.preventDefault();
-        var id = $(this).data("id");
-        var devouredState = {
-            devoured: 1
-        };
-        $.ajax("/api/burgers/" + id, {
-            type: "PUT",
-            data: devouredState
-        }).then(function () {
-            console.log("Burger devoured");
+        var id = $(this).val();
+        console.log(id)
+        // var devouredState = true 
+        $.ajax({
+            method: "PUT",
+            url: "/api/burgers/" + id
+        }).then(function (data) {
+            console.log("Burger devoured", data);
             location.reload();
         })
     })

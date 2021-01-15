@@ -1,7 +1,7 @@
 var connection = require("../config/connection");
 
 var orm = {
-  selectAll: function(table, cd){
+  selectAll: function(table, cb){
     var dbQuery = "SELECT * FROM " + table + ";";
     connection.query(dbQuery, function(err, res){
       if (err) {
@@ -33,12 +33,11 @@ function translateSql(obj) {
   }
   return arr .toString();
 }
-
 // create a variable called orm and export it
 // select all query 
 var orm = {
   selectAll: function (table, cb) {
-    var dbQuery = "SELECT * FROM " + table + ",";
+    var dbQuery = "SELECT * FROM " + table;
     connection.query(dbQuery, function (err, res) {
       if (err) {
         throw err;
@@ -46,7 +45,6 @@ var orm = {
       cb(res);
     })
   },
-
   // insert query 
   insertOne: function(table, cols, vals, cb) {
     var dbQuery = "INSERT INTO " + table + " (" + cols.toString() + ") " + "VAlUES (" + createQmarks(vals.length) + ") ";
@@ -63,7 +61,7 @@ var orm = {
 updateOne: function (table, objColVals, condition, cb) {
     var dbQuery = "UPDATE " + table + " SET " + translateSql(objColVals) + " WHERE " + condition;
     console.log(dbQuery);
-    connection.query(dbQuery, vals, function (err, res) {
+    connection.query(dbQuery, function (err, res) {
       if (err) {
         throw err;
       }
@@ -82,4 +80,5 @@ deleteOne: function(table, condition, cb) {
   });
 }
 };
-module.exports = burgers;
+
+module.exports = orm;

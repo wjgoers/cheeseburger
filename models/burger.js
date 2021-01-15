@@ -13,10 +13,11 @@ insertOne: function(cols, vals, cb) {
   });
 },
 
-updateOne: function(objColsVals, condition, cb) {
-  orm.selectAll("burgers", objVolVals, condition, function(res) {
-    cb(res);
-  });
+updateOne: function(id, cb) {
+  var condition = "id=" + id
+  orm.updateOne("burgers", {
+    devoured: true
+  }, condition, cb)
 },
 
 deleteOne: function(condition, cb) {
