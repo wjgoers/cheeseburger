@@ -3,13 +3,13 @@ var express = require("express");
 var router = express.Router();
 
 // Import the model (cat.js) to use its database functions.
-var burger = require("../models/burger.js");
+var burgers = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-  burger.selectAll(function(data){
+  burgers.selectAll(function(data){
     var hdbrsObj = {
-      burger: data
+      burgers: data
     };
     console.log(hdbrsObj);
     res.render("index", hdbrsObj);
@@ -22,7 +22,7 @@ router.get("/", function(req, res) {
     // res.render("index");
 
     router.post("/api/burgers", function(req, res){
-      burger.insertOne(
+      burgers.insertOne(
         ["burger_names", "devoured"],
         [req.body.burger_names, req.body.devoured],
         function(result){
@@ -57,7 +57,7 @@ router.get("/", function(req, res) {
     })
   });
 
-  module.exports = router;
+  module.exports = routers;
 // });
 
 // router.get("/burgers", function(req, res){

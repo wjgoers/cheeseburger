@@ -1,5 +1,17 @@
 var connection = require("../config/connection");
 
+var orm = {
+  selectAll: function(table, cd){
+    var dbQuery = "SELECT * FROM " + table + ";";
+    connection.query(dbQuery, function(err, res){
+      if (err) {
+        throw err;
+      }
+      cb(res);
+    })
+  }
+};
+
 function createQmarks(num) {
   var arr = [];
   for(var i = 0; i < num; i++) {
@@ -36,7 +48,7 @@ var orm = {
   },
 
   // insert query 
-  insertOne: function (table, cols, vals, cb) {
+  insertOne: function(table, cols, vals, cb) {
     var dbQuery = "INSERT INTO " + table + " (" + cols.toString() + ") " + "VAlUES (" + createQmarks(vals.length) + ") ";
 
     console.log(dbQuery);
@@ -70,3 +82,4 @@ deleteOne: function(table, condition, cb) {
   });
 }
 };
+module.exports = burgers;
