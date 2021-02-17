@@ -1,18 +1,10 @@
 {
-  "name": "cheeseburger",
+  "name": "-y",
   "version": "1.0.0",
-  "description": "Eat-Da-Burger",
-  "main": "server.js",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
-    "mysql": "^2.18.1"
-  },
-  "devDependencies": {},
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -23,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/wjgoers/cheeseburger/issues"
   },
-  "homepage": "https://github.com/wjgoers/cheeseburger#readme"
+  "homepage": "https://github.com/wjgoers/cheeseburger#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7"
+  }
 }
